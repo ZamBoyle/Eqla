@@ -1,6 +1,9 @@
 // data.js
 window.data = {
     sections: [
+        /****************/
+        /* Introduction */
+        /****************/
         {
             id: "introduction",
             title: "Introduction",
@@ -9,14 +12,23 @@ window.data = {
                 description: "Ce site présente une compilation de ressources sur l'accessibilité numérique, destinée à faciliter l'accès aux personnes en situation de handicap, notamment celles ayant une déficience visuelle. Vous trouverez ici des liens vers des articles, des ressources sur les directives WCAG, ainsi que des idées d'articles vulgarisés sur les nouvelles technologies."
             }
         },
+        /*****************************/        
+        /* Articles, presse, décrets */
+        /*****************************/
         {
             id: "articles",
             title: "Articles & Ressources sur l'Accessibilité Numérique",
             label: "Aller à la section Articles et Ressources",
             description: "Cette section contient des liens utiles, des articles de presse et des informations sur les directives européennes pour améliorer l'accessibilité numérique.",
+            numbered: true,
             content: [
-                { category: "link", title: "Règles pour l’accessibilité des contenus Web (WCAG) 2 – Vue d’ensemble [FR]", url: "https://www.w3.org/WAI/standards-guidelines/wcag/fr", description: "<p>Cette page présente les Règles pour l’accessibilité des contenus Web (WCAG), un standard international, notamment WCAG 2.0, WCAG 2.1 et WCAG 2.2. Les documents des WCAG expliquent comment rendre les contenus Web plus accessibles aux personnes en situation de handicap.</p>", note: 3 },
+                /***********************************************************************************************/
+                /* Exemple de lien:                                                                            */
+                /* { category: "link", title: "un titre", url: "#", description: "une description", note: 3 }  */
+                /***********************************************************************************************/
+                { category: "link", title: "Règles pour l’accessibilité des contenus Web (WCAG) 2 – Vue d’ensemble [FR]", url: "https://www.w3.org/WAI/standards-guidelines/wcag/fr", description: "Cette page présente les Règles pour l’accessibilité des contenus Web (WCAG), un standard international, notamment WCAG 2.0, WCAG 2.1 et WCAG 2.2. Les documents des WCAG expliquent comment rendre les contenus Web plus accessibles aux personnes en situation de handicap.", note: 3 },
                 { category: "link", title: "WCAG 2 en bref [FR]", url: "https://www.w3.org/WAI/standards-guidelines/wcag/glance/fr", description: "<p>Cette page propose un résumé paraphrasé des Règles pour l’accessibilité des contenus Web (WCAG) 2.1 et 2.2.</p>" },                
+                { category: "link", title: "La plus belle pour aller danser :-)", url: "https://www.w3.org/WAI/standards-guidelines/wcag/glance/fr", description: "<p>Cette page propose un résumé paraphrasé des Règles pour l’accessibilité des contenus Web (WCAG) 2.1 et 2.2.</p>", note:5 },                                
                 { category: "link", title: "Comment satisfaire aux WCAG 2 (référence rapide) [EN]", url: "https://www.w3.org/WAI/WCAG22/quickref/", description: "<p>Un guide de référence rapide et personnalisable des exigences (critères de succès) et techniques des Directives pour l'accessibilité du contenu Web (WCAG) 2.</p>" },                   
                 { category: "link", title: "Digital Wallonia: Les sites Web des organismes publics accessibles à tous", url: "https://www.digitalwallonia.be/fr/publications/accessibilite-sites-web-publics/", description: "<p>Depuis le 23 septembre 2020, tous les sites Web des organismes publics doivent être accessibles à tous. L'Agence du Numérique est chargée d'effectuer un état des lieux de ces sites. Cette initiative s'inscrit dans la cadre du programme \"Wallonie As a Service\" de Digital Wallonia.</p>" },
 
@@ -36,7 +48,10 @@ window.data = {
                 { category: "link", title: "Accessibilité numérique : bonnes pratiques éditoriales", url: "https://www.accede-web.com/notices/editoriale/", description: "<p>Ce guide se concentre sur les bonnes pratiques éditoriales pour créer du contenu web accessible, offrant des conseils précieux pour les rédacteurs et les gestionnaires de contenu.</p>" },
                 { category: "link", title: "Ressources sur l'accessibilité par l'UNAPEI", url: "https://www.unapei.org/article/accessibilite-numerique/", description: "<p>L'UNAPEI fournit des ressources sur l'accessibilité numérique, avec un accent particulier sur l'inclusion des personnes en situation de handicap mental.</p>"
                 },
-
+                /************************************************************************************************/
+                /* Exemple de lien pour la presse:                                                              */
+                /* { category: "press", title: "un titre", url: "#", description: "une description", note: 3 }  */
+                /************************************************************************************************/
                 { category: "press", title: "Election 2024, programme LES ENGAGEES : Accessibilité numérique [Mai 2024]", url: "https://www.autonomia.org/article/election-2024-programme-les-engagees-accessibilite-numerique", description: "<p>Les Engagées proposent un programme pour l'élection 2024 visant à améliorer l'accessibilité numérique en Belgique, en mettant l'accent sur la conformité aux directives européennes, la formation du personnel public, le maintien de permanences physiques et l'adaptation des outils numériques pour tous, notamment les personnes en situation de handicap.</p>" },
                 { category: "press", title: "Une Europe digitale pas accessible [Août 2024]", url: "https://informations.handicap.fr/a-une-europe-digitale-pas-accessible-37073.php", description: "<p>Le 28 juin 2024 paraissait un rapport sur l'accessibilité numérique des sites web européens. C'est un coup dur : 94 % d'entre eux ne sont pas conformes aux réglementations de l'Union Européenne. Explications.</p>" },
 
@@ -67,29 +82,39 @@ window.data = {
                 { category: "press", title: "Accessibilité web : top 10 des questions les plus souvent posées [2023]", url: "https://blog.ipedis.com/accessibilite-web-top-10-des-questions-les-plus-souvent-posees", description: "<p>Un article répondant aux questions fréquentes sur l'accessibilité web, incluant des informations sur les réglementations européennes et françaises en la matière.</p>" },
                 
                 { category: "press", title: "Revue de presse | Handicap et numérique [2023]", url: "https://dubasque.org/revue-de-presse-quest-ce-que-la-maltraitance-institutionnelle-handicap-et-numerique-lase-et-la-prostitution-des-mineurs/", description: "<p>Une revue de presse abordant divers sujets liés au handicap, dont les recommandations d'Emmaüs Connect et la Croix Rouge pour favoriser l'inclusion numérique des personnes en situation de handicap.</p>" },                
-
-                { category: "decree", title: "Transposition nationale de la Directive (UE) 2016/2102", url: "https://www.anysurfer.be/fr/documentation/articles/detail/la-directive-europeenne-relative-a-laccessibilite-des-sites-web", description: "<p>Cette directive concerne l'accessibilité des sites internet et des applications mobiles des organismes du secteur public. Elle impose que ces sites et applications soient \"plus accessibles\", en particulier pour les personnes handicapées, en les rendant \"perceptibles, utilisables, compréhensibles et robustes\".</p><p>Belgique :</p><ol><li><a href=\"http://www.ejustice.just.fgov.be/eli/loi/2018/07/19/2018040577/justel\">Loi fédérale du 19 juillet 2018</a></li><li><a href=\"https://codex.vlaanderen.be/Portals/Codex/documenten/1030009.html\">Décret flamand du 7 décembre 2018</a></li><li><a href=\"http://www.ejustice.just.fgov.be/eli/ordonnance/2018/10/04/2018031943/justel\">Ordonnance bruxelloise du 14 octobre 2018</a></li><li><a href=\"http://www.ejustice.just.fgov.be/eli/decret/2018/10/15/2018205673/justel\">Décret de la Communauté germanophone du 15 octobre 2018</a></li><li><a href=\"https://www.ejustice.just.fgov.be/eli/decret/2019/05/09/2019013261/justel\">Décret de la COCOF du 9 mai 2019</a></li><li><a href=\"https://wallex.wallonie.be/eli/loi-decret/2019/05/02/2019203962\">Décret wallon du 2 mai 2019</a></li><li><a href=\"https://www.gallilex.cfwb.be/document/pdf/47101_000.pdf\">Décret de la Fédération Wallonie-Bruxelles du 3 mai 2019</a></li></ol><p>Ces liens vous permettront d'accéder aux textes officiels de chacune de ces législations relatives à l'accessibilité numérique dans les différentes entités belges.</p>", note: 2
+                /************************************************************************************************/
+                /* Exemple de lien de décret:                                                                   */
+                /* { category: "decree", title: "un titre", url: "#", description: "une description", note: 3 } */
+                /************************************************************************************************/
+                { category: "decree", title: "Transposition belge de la Directive (UE) 2016/2102", url: "https://www.anysurfer.be/fr/documentation/articles/detail/la-directive-europeenne-relative-a-laccessibilite-des-sites-web", description: "<p>Cette directive concerne l'accessibilité des sites internet et des applications mobiles des organismes du secteur public. Elle impose que ces sites et applications soient \"plus accessibles\", en particulier pour les personnes handicapées, en les rendant \"perceptibles, utilisables, compréhensibles et robustes\".</p><ol><li><a href=\"http://www.ejustice.just.fgov.be/eli/loi/2018/07/19/2018040577/justel\">Loi fédérale du 19 juillet 2018</a></li><li><a href=\"https://codex.vlaanderen.be/Portals/Codex/documenten/1030009.html\">Décret flamand du 7 décembre 2018</a></li><li><a href=\"http://www.ejustice.just.fgov.be/eli/ordonnance/2018/10/04/2018031943/justel\">Ordonnance bruxelloise du 14 octobre 2018</a></li><li><a href=\"http://www.ejustice.just.fgov.be/eli/decret/2018/10/15/2018205673/justel\">Décret de la Communauté germanophone du 15 octobre 2018</a></li><li><a href=\"https://www.ejustice.just.fgov.be/eli/decret/2019/05/09/2019013261/justel\">Décret de la COCOF du 9 mai 2019</a></li><li><a href=\"https://wallex.wallonie.be/eli/loi-decret/2019/05/02/2019203962\">Décret wallon du 2 mai 2019</a></li><li><a href=\"https://www.gallilex.cfwb.be/document/pdf/47101_000.pdf\">Décret de la Fédération Wallonie-Bruxelles du 3 mai 2019</a></li></ol><p>Ces liens vous permettront d'accéder aux textes officiels de chacune de ces législations relatives à l'accessibilité numérique dans les différentes entités belges.</p>", note: 2
                     },
                 { category: "decree", title: "Directive (UE) 2016/2102 du 26 octobre 2016", url: "hhttps://eur-lex.europa.eu/FR/legal-content/summary/accessibility-of-public-sector-websites-and-mobile-apps.html", description: "<p>Cette directive concerne l'accessibilité des sites internet et des applications mobiles des organismes du secteur public. Elle impose que ces sites et applications soient \"plus accessibles\", en particulier pour les personnes handicapées, en les rendant \"perceptibles, utilisables, compréhensibles et robustes\".</p>", note: 3              
                 }
             ]
         },
+        /******************************/
+        /* Accessibilité des Chatbots */
+        /******************************/
         {
             id: "chatbots",
             title: "Accessibilité des Chatbots",
             label: "Aller à la section Accessibilité des Chatbots",
             description: "Analyse de l'accessibilité des différents chatbots disponibles sur le marché.",
             content: [
-                { title: "ChatGPT", url: "https://chat.openai.com/", result: "positif", description: "Accessible avec quelques limitations mineures.", note:1 },
-                { title: "Bard", url: "https://bard.google.com/", result: "négatif", description: "Manque de compatibilité avec les lecteurs d'écran." },
-                { title: "Claude", url: "https://bard.google.com/", result: "positif", description: "Manque de compatibilité avec les lecteurs d'écran." }
+                { title: "ChatGPT", url: "https://chat.openai.com/", result: "négatif", description: "Accessible avec quelques limitations mineures.", note:0 },
+                { title: "Bard", url: "https://bard.google.com/", result: "négatif", description: "Manque de compatibilité avec les lecteurs d'écran.", note:0 },
+                { title: "Claude", url: "https://bard.google.com/", result: "négatif", description: "Manque de compatibilité avec les lecteurs d'écran.", note:0 }
             ]
         },
+        /*******************************/
+        /* Idées d'Articles Vulgarisés */
+        /*******************************/
         {
             id: "vulgarisation",
             title: "Idées d'Articles Vulgarisés sur les Nouvelles Technologies",
             label: "Aller à la section Idées d'Articles Vulgarisés",
             description: "Idées d'articles simplifiés pour expliquer les technologies émergentes au grand public.",
+            numbered: true,
             content: [
                 { title: "L'Intelligence Artificielle et l'Accessibilité", description: "Comment l'IA aide à rendre le contenu numérique plus accessible." },
                 { title: "La Réalité Virtuelle pour les Personnes Handicapées", description: "Exploration des innovations en réalité virtuelle pour l'accessibilité." }

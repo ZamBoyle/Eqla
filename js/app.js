@@ -1,128 +1,160 @@
 // app.js
 document.addEventListener("DOMContentLoaded", function() {
     const sections = window.data.sections;
+    const generatedContentContainer = document.getElementById('generated-content');
 
-    // Charger les sections de navigation dans le header
+    if (!generatedContentContainer) {
+        console.error("Le div avec l'id 'generated-content' n'a pas été trouvé.");
+        return;
+    }
+
+    createNavigation(sections);
+    createContent(sections, generatedContentContainer);
+});
+
+function createNavigation(sections) {
     const navbarNav = document.querySelector('.navbar-nav');
     sections.forEach((section) => {
-        const navItem = document.createElement('li');
-        navItem.classList.add('nav-item');
+        const navItem = createElement('li', { class: 'nav-item' });
         navItem.innerHTML = `<a class="nav-link" href="#${section.id}" aria-label="${section.label}">${section.title}</a>`;
         navbarNav.appendChild(navItem);
     });
+}
 
-    function createStarRating(rating) {
-        if (rating === undefined) return '';
-        
-        let stars = '';
-        for (let i = 1; i <= 3; i++) {
-            if (i <= rating) {
-                stars += '<i class="bi bi-star-fill text-warning"></i>';
-            } else {
-                stars += '<i class="bi bi-star text-warning"></i>';
-            }
-        }
-        return `<span class="ms-2" aria-label="Note: ${rating} sur 5">${stars}</span>`;
-    }
-
-    // Charger les sections dynamiquement dans le main
-    const mainContainer = document.querySelector('main.container');
+function createContent(sections, container) {
     sections.forEach((section, sectionIndex) => {
-        const sectionElement = document.createElement('section');
-        sectionElement.id = section.id;
-        sectionElement.classList.add('mb-5', 'card');
-
-        const sectionBody = document.createElement('div');
-        sectionBody.classList.add('card-body');
-        sectionElement.appendChild(sectionBody);
-
-        const h2 = document.createElement('h2');
-        h2.classList.add('mb-4', 'text-decoration-underline');
-        h2.setAttribute('tabindex', '0');
-        h2.innerText = `${sectionIndex + 1}. ${section.title}`;
-        sectionBody.appendChild(h2);
-
-        if (section.description) {
-            const description = document.createElement('p');
-            description.innerText = section.description;
-            sectionBody.appendChild(description);
-        }
-
-        if (section.content && section.content.description) {
-            const contentDescription = document.createElement('p');
-            contentDescription.innerHTML = `${createStarRating(section.content.note)} ${section.content.description}`;
-            sectionBody.appendChild(contentDescription);
-        } else if (Array.isArray(section.content)) {
-            let h3Counter = 1;
-            section.content.forEach(item => {
-                if (item.category) {
-                    let h3 = sectionBody.querySelector(`h3[data-category="${item.category}"]`);
-                    if (!h3) {
-                        h3 = document.createElement('h3');
-                        h3.setAttribute('data-category', item.category);
-                        h3.innerHTML = `${sectionIndex + 1}.${h3Counter++} ${getCategoryTitle(item.category)}`;
-                        sectionBody.appendChild(h3);
-                    }
-
-                    const contentItem = document.createElement('p');
-                    contentItem.innerHTML = `
-                        <a href="${item.url || '#'}" aria-label="${item.title || ''}">${item.title || 'Sans titre'}</a>
-                        ${createStarRating(item.note)}
-                        <br>${item.description || 'Pas de description disponible.'}
-                    `;
-                    sectionBody.appendChild(contentItem);
-                } else if (item.title && item.result) {
-                    const listItem = document.createElement('p');
-                    const iconClass = item.result === 'positif' ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-danger';
-                    const iconAriaLabel = item.result === 'positif' ? 'Accessibilité positive' : 'Accessibilité négative';
-
-                    listItem.innerHTML = `
-                        <i class="bi ${iconClass}" aria-label="${iconAriaLabel}" role="img"></i> 
-                        <strong>${item.title || 'Sans nom'}</strong>${createStarRating(item.note)}
-                        <br>${item.description || 'Pas de description disponible.'}
-                    `;
-                    sectionBody.appendChild(listItem);
-                } else if (item.title) {
-                    const listItem = document.createElement('p');
-                    listItem.innerHTML = `
-                        <strong>${item.title || 'Sans nom'}</strong>${createStarRating(item.note)}
-                        <br>${item.description || 'Pas de description disponible.'}
-                    `;
-                    sectionBody.appendChild(listItem);
-                }
-            });
-        }
-
-        mainContainer.appendChild(sectionElement);
+        const sectionElement = createSection(section, sectionIndex);
+        container.appendChild(sectionElement);
     });
+}
 
-    // Ajouter un numéro à tous les titres H2 existants
-    const allH2Elements = document.querySelectorAll('h2');
-    allH2Elements.forEach((h2, index) => {
-        const titleText = h2.innerText.replace(/^\d+\.\s*/, '');
-        h2.innerText = `${index + 1}. ${titleText}`;
-    });
+function createSection(section, sectionIndex) {
+    const sectionElement = createElement('section', { id: section.id, class: 'mb-5 card' });
+    const sectionBody = createElement('div', { class: 'card-body' });
+    sectionElement.appendChild(sectionBody);
 
-    // Ajouter un numéro hiérarchique aux titres H3
-    const allSections = document.querySelectorAll('section');
-    allSections.forEach((section, sectionIndex) => {
-        const h3Elements = section.querySelectorAll('h3');
-        h3Elements.forEach((h3, h3Index) => {
-            const titleText = h3.innerText.replace(/^\d+\.\d+\s*/, '');
-            h3.innerText = `${sectionIndex + 1}.${h3Index + 1} ${titleText}`;
-        });
-    });
+    sectionBody.appendChild(createSectionTitle(section.title, sectionIndex));
 
-    function getCategoryTitle(category) {
-        switch (category) {
-            case "link":
-                return "Liens";
-            case "press":
-                return "Articles de Presse";
-            case "decree":
-                return "Décrets";
-            default:
-                return "Autres";
-        }
+    if (section.description) {
+        sectionBody.appendChild(createDescription(section.description));
     }
-});
+
+    if (section.content && section.content.description) {
+        sectionBody.appendChild(createContentDescription(section.content));
+    } else if (Array.isArray(section.content)) {
+        createSectionContent(section, sectionBody, sectionIndex);
+    }
+
+    return sectionElement;
+}
+
+function createSectionTitle(title, index) {
+    const h2 = createElement('h2', { class: 'card-title mb-4', tabindex: '0' });
+    h2.textContent = `${index + 1}. ${title}`;
+    return h2;
+}
+
+function createDescription(description) {
+    return createElement('p', { class: 'card-text mb-4', textContent: description });
+}
+
+function createContentDescription(content) {
+    const p = createElement('p', { class: 'card-text' });
+    p.innerHTML = `${createStarRating(content.note)} ${content.description}`;
+    return p;
+}
+
+function createSectionContent(section, sectionBody, sectionIndex) {
+    let currentCategory = null;
+    let h3Counter = 1;
+    let itemCounter = 1;
+
+    section.content.forEach(item => {
+        if (item.category && item.category !== currentCategory) {
+            currentCategory = item.category;
+            sectionBody.appendChild(createSubsectionTitle(sectionIndex, h3Counter++, item.category));
+            itemCounter = 1;
+        }
+
+        sectionBody.appendChild(createContentItem(item, section.numbered, itemCounter++));
+    });
+}
+
+function createSubsectionTitle(sectionIndex, h3Counter, category) {
+    const h3 = createElement('h3', { class: 'mt-4 mb-3' });
+    h3.innerHTML = `${sectionIndex + 1}.${h3Counter} ${getCategoryTitle(category)}`;
+    return h3;
+}
+
+function createContentItem(item, numbered, counter) {
+    const contentItem = createElement('div', { class: 'mb-3' });
+    let itemContent = '';
+
+    if (item.category) {
+        itemContent = createLinkItem(item, numbered ? counter : null);
+    } else if (item.title && item.result) {
+        itemContent = createResultItem(item, numbered ? counter : null);
+    } else if (item.title) {
+        itemContent = createTitleItem(item, numbered ? counter : null);
+    }
+
+    contentItem.innerHTML = itemContent;
+    return contentItem;
+}
+
+function createLinkItem(item, counter) {
+    const itemNumber = counter ? `${counter}. ` : '';
+    return `
+        <p><strong>${itemNumber}<a href="${item.url || '#'}" aria-label="${item.title || ''}">${item.title || 'Sans titre'}</a></strong>${createStarRating(item.note)}</p>
+        <p>${item.description || 'Pas de description disponible.'}</p>
+    `;
+}
+
+function createResultItem(item, counter) {
+    const itemNumber = counter ? `${counter}. ` : '';
+    const iconClass = item.result === 'positif' ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-danger';
+    const iconAriaLabel = item.result === 'positif' ? 'Accessibilité positive' : 'Accessibilité négative';
+    return `
+        <p><strong>${itemNumber}<i class="bi ${iconClass}" aria-label="${iconAriaLabel}" role="img"></i> ${item.title || 'Sans nom'}</strong>${createStarRating(item.note)}</p>
+        <p>${item.description || 'Pas de description disponible.'}</p>
+    `;
+}
+
+function createTitleItem(item, counter) {
+    const itemNumber = counter ? `${counter}. ` : '';
+    return `
+        <p><strong>${itemNumber}${item.title || 'Sans nom'}</strong>${createStarRating(item.note)}</p>
+        <p>${item.description || 'Pas de description disponible.'}</p>
+    `;
+}
+
+function createStarRating(rating) {
+    if (rating === undefined) return '';
+    
+    const stars = Array.from({ length: 5 }, (_, i) => 
+        `<i class="bi ${i < rating ? 'bi-star-fill' : 'bi-star'} text-warning"></i>`
+    ).join('');
+    
+    return `<span class="star-rating ms-2 d-inline-block" aria-label="Note: ${rating} sur 5">${stars}</span>`;
+}
+
+function getCategoryTitle(category) {
+    const categories = {
+        "link": "Liens",
+        "press": "Articles de Presse",
+        "decree": "Décrets"
+    };
+    return categories[category] || "Autres";
+}
+
+function createElement(tag, attributes = {}) {
+    const element = document.createElement(tag);
+    Object.entries(attributes).forEach(([key, value]) => {
+        if (key === 'textContent') {
+            element.textContent = value;
+        } else {
+            element.setAttribute(key, value);
+        }
+    });
+    return element;
+}
