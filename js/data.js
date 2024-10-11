@@ -94,11 +94,11 @@ window.data = {
               { "title": "ChatGPT", "url": "https://chat.openai.com/", "result": "négatif", "description": "", "note": 1 },
               {"title": "Claude", "url": "https://www.anthropic.com/", "result": "négatif", "description": "", "note": 1 },
               {"title": "Gemini", "url": "https://gemini.google.com/", "result": "négatif", "description": "", "note": 1 },
-              {"title": "Pi", "url": "https://pi.ai/", "result": "?", "description": "", "note": 1 },
+              {"title": "Pi", "url": "https://pi.ai/", "result": "?", "description": "", "note": 0 },
               {"title": "Grok", "url": "https://grok.x.ai/", "result": "?", "description": "", "note": 0 },
-              {"title": "Groq (différent de Grok)", "url": "https://groq.com/", "result": "?", "description": "", "note": 1 },
+              {"title": "Groq (différent de Grok)", "url": "https://groq.com/", "result": "?", "description": "", "note": 0 },
               {"title": "Copilot (Microsoft)", "url": "https://copilot.microsoft.com/", "result": "positif", "description": "Microsoft est généralement reconnu pour ses efforts en matière d'accessibilité dans ses produits. Bien que je n'aie pas trouvé d'informations spécifiques sur des tests d'accessibilité pour Copilot dans les résultats de recherche fournis, il est probable que Microsoft ait appliqué ses standards habituels d'accessibilité à cet outil.", "note": 4 },
-              {"title": "Alexa", "url": "https://alexa.amazon.com/", "result": "?", "description": "", "note": 1 }
+              {"title": "Alexa", "url": "https://alexa.amazon.com/", "result": "?", "description": "", "note": 0 }
             ]
           },
         /*******************************/
