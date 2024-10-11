@@ -90,10 +90,8 @@ function createContentItem(item, numbered, counter) {
     const contentItem = createElement('div', { class: 'mb-3' });
     let itemContent = '';
 
-    if (item.category) {
+    if (item.url) {
         itemContent = createLinkItem(item, numbered ? counter : null);
-    } else if (item.title && item.result) {
-        itemContent = createResultItem(item, numbered ? counter : null);
     } else if (item.title) {
         itemContent = createTitleItem(item, numbered ? counter : null);
     }
@@ -104,18 +102,21 @@ function createContentItem(item, numbered, counter) {
 
 function createLinkItem(item, counter) {
     const itemNumber = counter ? `${counter}. ` : '';
+    let titleContent = `<a href="${item.url}" target="_blank">${item.title || 'Sans titre'}</a>`;
+    
+    let resultIcon = '';
+    if (item.result !== undefined) {
+        const iconClass = item.result === 'positif' ? 'bi-check-circle-fill text-success' : 
+                          item.result === 'négatif' ? 'bi-x-circle-fill text-danger' : 
+                          'bi-question-circle-fill text-warning';
+        const iconAriaLabel = item.result === 'positif' ? 'Accessibilité positive' : 
+                              item.result === 'négatif' ? 'Accessibilité négative' : 
+                              'Accessibilité inconnue';
+        resultIcon = `<i class="bi ${iconClass}" aria-label="${iconAriaLabel}" role="img"></i> `;
+    }
+    
     return `
-        <p><strong>${itemNumber}<a href="${item.url || '#'}" aria-label="${item.title || ''}">${item.title || 'Sans titre'}</a></strong>${createStarRating(item.note)}</p>
-        <p>${item.description || 'Pas de description disponible.'}</p>
-    `;
-}
-
-function createResultItem(item, counter) {
-    const itemNumber = counter ? `${counter}. ` : '';
-    const iconClass = item.result === 'positif' ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-danger';
-    const iconAriaLabel = item.result === 'positif' ? 'Accessibilité positive' : 'Accessibilité négative';
-    return `
-        <p><strong>${itemNumber}<i class="bi ${iconClass}" aria-label="${iconAriaLabel}" role="img"></i> ${item.title || 'Sans nom'}</strong>${createStarRating(item.note)}</p>
+        <p><strong>${itemNumber}${resultIcon}${titleContent}</strong>${createStarRating(item.note)}</p>
         <p>${item.description || 'Pas de description disponible.'}</p>
     `;
 }
