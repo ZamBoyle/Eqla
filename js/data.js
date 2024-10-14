@@ -21,28 +21,66 @@ window.data = {
             "label": "Aller à la section Articles et Ressources",
             "description": "Cette section contient des liens utiles, des articles de presse et des informations sur les directives européennes pour améliorer l'accessibilité numérique.",
             "numbered": true,
+            "table": false,
             "content": [
                 /***********************************************************************************************/
                 /* Exemple de lien:                                                                            */
                 /* { "category": "link", "title": "un titre", "url": "#", "description": "une description", "note": 3 }  */
                 /***********************************************************************************************/
-                { "category": "link", "title": "Règles pour l’accessibilité des contenus Web (WCAG) 2 – Vue d’ensemble", "url": "https://www.w3.org/WAI/standards-guidelines/wcag/fr", "description": "Cette page présente les Règles pour l’accessibilité des contenus Web (WCAG), un standard international, notamment WCAG 2.0, WCAG 2.1 et WCAG 2.2. Les documents des WCAG expliquent comment rendre les contenus Web plus accessibles aux personnes en situation de handicap.", "note": 5 },
-                { "category": "link", "title": "WCAG 2 en bref [FR]", "url": "https://www.w3.org/WAI/standards-guidelines/wcag/glance/fr", "description": "<p>Cette page propose un résumé paraphrasé des Règles pour l’accessibilité des contenus Web (WCAG) 2.1 et 2.2.</p>" },                
-                { "category": "link", "title": "Comment satisfaire aux WCAG 2 (référence rapide) [EN]", "url": "https://www.w3.org/WAI/WCAG22/quickref/", "description": "<p>Un guide de référence rapide et personnalisable des exigences (critères de succès) et techniques des Directives pour l'accessibilité du contenu Web (WCAG) 2.</p>" },                   
-                { "category": "link", "title": "Digital Wallonia: Les sites Web des organismes publics accessibles à tous", "url": "https://www.digitalwallonia.be/fr/publications/accessibilite-sites-web-publics/", "description": "<p>Depuis le 23 septembre 2020, tous les sites Web des organismes publics doivent être accessibles à tous. L'Agence du Numérique est chargée d'effectuer un état des lieux de ces sites. Cette initiative s'inscrit dans la cadre du programme \"Wallonie As a Service\" de Digital Wallonia.</p>" },
+                { "category": "link", "title": "Règles pour l'accessibilité des contenus Web (WCAG) 2 – Vue d'ensemble", "url": "https://www.w3.org/WAI/standards-guidelines/wcag/fr", "description": "Cette page présente les Règles pour l'accessibilité des contenus Web (WCAG), un standard international, notamment WCAG 2.0, WCAG 2.1 et WCAG 2.2. Les documents des WCAG expliquent comment rendre les contenus Web plus accessibles aux personnes en situation de handicap.", "note": 5 },
+                
+                { "category": "link", "title": "WCAG 2 en bref [FR]", "url": "https://www.w3.org/WAI/standards-guidelines/wcag/glance/fr", "description": "<p>Cette page propose un résumé paraphrasé des Règles pour l'accessibilité des contenus Web (WCAG) 2.1 et 2.2.</p>", "note": 4.5 },
+                
+                { "category": "link", "title": "Comment satisfaire aux WCAG 2 (référence rapide) [EN]", "url": "https://www.w3.org/WAI/WCAG22/quickref/", "description": "<p>Un guide de référence rapide et personnalisable des exigences (critères de succès) et techniques des Directives pour l'accessibilité du contenu Web (WCAG) 2.</p>", "note": 4.5 },
+                
+                { "category": "link", "title": "Digital Wallonia: Les sites Web des organismes publics accessibles à tous", "url": "https://www.digitalwallonia.be/fr/publications/accessibilite-sites-web-publics/", "description": "<p>Depuis le 23 septembre 2020, tous les sites Web des organismes publics doivent être accessibles à tous. L'Agence du Numérique est chargée d'effectuer un état des lieux de ces sites. Cette initiative s'inscrit dans la cadre du programme \"Wallonie As a Service\" de Digital Wallonia.</p>", "note": 4 },
+                
+                { "category": "link", "title": "Guide d'accessibilité numérique de la Web Accessibility Initiative (WAI) du W3C", "url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/fr", "description": "<p>Ce guide complet offre une introduction à l'accessibilité numérique, couvrant les principes fondamentaux, les normes et les meilleures pratiques pour rendre le web accessible à tous.</p>", "note": 5 },
+                
+                { "category": "link", "title": "Référentiel Général d'Amélioration de l'Accessibilité (RGAA)", "url": "https://www.numerique.gouv.fr/publications/rgaa-accessibilite/", "description": "<p>Le RGAA est un référentiel français qui fournit des critères et des tests pour évaluer la conformité d'un site web aux normes d'accessibilité.</p>", "note": 4.5 },
+                
+                { "category": "link", "title": "Outils et techniques d'évaluation de l'accessibilité web [EN]", "url": "https://www.w3.org/WAI/test-evaluate/", "description": "<p>Cette ressource propose une variété d'outils et de méthodes pour évaluer l'accessibilité des sites web, aidant les développeurs et les designers à identifier et à résoudre les problèmes d'accessibilité.</p>", "note": 4.5 },
+                
+                { "category": "link", "title": "Introduction à l'accessibilité web par Mozilla", "url": "https://developer.mozilla.org/fr/docs/Learn/Accessibility/What_is_accessibility", "description": "<p>Mozilla offre une introduction complète à l'accessibilité web, expliquant son importance et fournissant des conseils pratiques pour la mise en œuvre.</p>", "note": 4 },
+                
+                { "category": "link", "title": "Guide d'accessibilité mobile par Google", "url": "https://developer.android.com/guide/topics/ui/accessibility", "description": "<p>Ce guide de Google se concentre sur l'accessibilité des applications mobiles Android, offrant des conseils détaillés pour les développeurs.</p>", "note": 4.5 },
+                
+                { "category": "link", "title": "Ressources sur l'accessibilité numérique par Microsoft", "url": "https://www.microsoft.com/fr-fr/accessibility", "description": "<p>Microsoft propose une collection de ressources sur l'accessibilité, couvrant leurs produits et offrant des conseils généraux pour rendre la technologie plus inclusive.</p>", "note": 4 },
+                
+                { "category": "link", "title": "Checklist d'accessibilité web par WebAIM [EN]", "url": "https://webaim.org/standards/wcag/checklist", "description": "<p>WebAIM fournit une checklist pratique basée sur les WCAG, permettant aux développeurs de vérifier rapidement la conformité de leurs sites web.</p>", "note": 4.5 },
+                
+                { "category": "link", "title": "Techniques WCAG 2.1 [EN]", "url": "https://www.w3.org/WAI/WCAG21/Techniques/", "description": "<p>Cette ressource détaille les techniques spécifiques pour mettre en œuvre les recommandations WCAG 2.1, offrant des exemples concrets et des explications détaillées.</p>", "note": 5 },
+                
+                { "category": "link", "title": "Guide d'accessibilité iOS par Apple [EN]", "url": "https://developer.apple.com/accessibility/", "description": "<p>Apple propose un guide complet sur l'accessibilité pour les développeurs iOS, couvrant les fonctionnalités d'accessibilité intégrées et les meilleures pratiques de développement.</p>", "note": 4.5 },
+                
+                { "category": "link", "title": "Outils d'accessibilité web par W3C [EN]", "url": "https://www.w3.org/WAI/ER/tools/", "description": "<p>Le W3C fournit une liste d'outils d'évaluation de l'accessibilité web, aidant les développeurs à choisir les outils appropriés pour leurs projets.</p>", "note": 4.5 },
+                
+                { "category": "link", "title": "BBC - Guide d'accessibilité pour les développeurs web [EN]", "url": "https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/", "description": "<p>La BBC propose un guide pratique pour les développeurs web, couvrant les aspects essentiels de l'accessibilité dans le développement web et mobile.</p>", "note": 4 },
+                
+                { "category": "link", "title": "Accessibilité numérique : bonnes pratiques éditoriales", "url": "https://www.accede-web.com/notices/editoriale/", "description": "<p>Ce guide se concentre sur les bonnes pratiques éditoriales pour créer du contenu web accessible, offrant des conseils précieux pour les rédacteurs et les gestionnaires de contenu.</p>", "note": 4 },
+                
+                { "category": "link", "title": "Guide d'accessibilité numérique de l'Union européenne", "url": "https://ec.europa.eu/social/main.jsp?catId=1202&langId=fr", "description": "Ce guide officiel de l'UE présente les directives et les normes européennes en matière d'accessibilité numérique, ainsi que des ressources pour leur mise en œuvre.", "note": 5 },
 
-                { "category": "link", "title": "Guide d'accessibilité numérique de la Web Accessibility Initiative (WAI) du W3C", "url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/fr", "description": "<p>Ce guide complet offre une introduction à l'accessibilité numérique, couvrant les principes fondamentaux, les normes et les meilleures pratiques pour rendre le web accessible à tous.</p>" },
-                { "category": "link", "title": "Référentiel Général d'Amélioration de l'Accessibilité (RGAA)", "url": "https://www.numerique.gouv.fr/publications/rgaa-accessibilite/", "description": "<p>Le RGAA est un référentiel français qui fournit des critères et des tests pour évaluer la conformité d'un site web aux normes d'accessibilité.</p>" },
-                { "category": "link", "title": "Outils et techniques d'évaluation de l'accessibilité web [EN]", "url": "https://www.w3.org/WAI/test-evaluate/", "description": "<p>Cette ressource propose une variété d'outils et de méthodes pour évaluer l'accessibilité des sites web, aidant les développeurs et les designers à identifier et à résoudre les problèmes d'accessibilité.</p>" },
-                { "category": "link", "title": "Introduction à l'accessibilité web par Mozilla", "url": "https://developer.mozilla.org/fr/docs/Learn/Accessibility/What_is_accessibility", "description": "<p>Mozilla offre une introduction complète à l'accessibilité web, expliquant son importance et fournissant des conseils pratiques pour la mise en œuvre.</p>" },
-                { "category": "link", "title": "Guide d'accessibilité mobile par Google", "url": "https://developer.android.com/guide/topics/ui/accessibility", "description": "<p>Ce guide de Google se concentre sur l'accessibilité des applications mobiles Android, offrant des conseils détaillés pour les développeurs.</p>" },
-                { "category": "link", "title": "Ressources sur l'accessibilité numérique par Microsoft", "url": "https://www.microsoft.com/fr-fr/accessibility", "description": "<p>Microsoft propose une collection de ressources sur l'accessibilité, couvrant leurs produits et offrant des conseils généraux pour rendre la technologie plus inclusive.</p>" },
-                { "category": "link", "title": "Checklist d'accessibilité web par WebAIM [EN]", "url": "https://webaim.org/standards/wcag/checklist", "description": "<p>WebAIM fournit une checklist pratique basée sur les WCAG, permettant aux développeurs de vérifier rapidement la conformité de leurs sites web.</p>" },
-                { "category": "link", "title": "Techniques WCAG 2.1 [EN]", "url": "https://www.w3.org/WAI/WCAG21/Techniques/", "description": "<p>Cette ressource détaille les techniques spécifiques pour mettre en œuvre les recommandations WCAG 2.1, offrant des exemples concrets et des explications détaillées.</p>" },
-                { "category": "link", "title": "Guide d'accessibilité iOS par Apple [EN]", "url": "https://developer.apple.com/accessibility/", "description": "<p>Apple propose un guide complet sur l'accessibilité pour les développeurs iOS, couvrant les fonctionnalités d'accessibilité intégrées et les meilleures pratiques de développement.</p>" },
-                { "category": "link", "title": "Outils d'accessibilité web par W3C [EN]", "url": "https://www.w3.org/WAI/ER/tools/", "description": "<p>Le W3C fournit une liste d'outils d'évaluation de l'accessibilité web, aidant les développeurs à choisir les outils appropriés pour leurs projets.</p>" },
-                { "category": "link", "title": "BBC - Guide d'accessibilité pour les développeurs web [EN]", "url": "https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/", "description": "<p>La BBC propose un guide pratique pour les développeurs web, couvrant les aspects essentiels de l'accessibilité dans le développement web et mobile.</p>" },
-                { "category": "link", "title": "Accessibilité numérique : bonnes pratiques éditoriales", "url": "https://www.accede-web.com/notices/editoriale/", "description": "<p>Ce guide se concentre sur les bonnes pratiques éditoriales pour créer du contenu web accessible, offrant des conseils précieux pour les rédacteurs et les gestionnaires de contenu.</p>" },
+                { "category": "link", "title": "Accessibilité numérique : Guide pratique de conception universelle", "url": "https://www.nngroup.com/articles/accessible-design-for-users-with-disabilities/", "description": "Le Nielsen Norman Group propose un guide complet sur la conception universelle pour l'accessibilité numérique, couvrant divers types de handicaps.", "note": 4.5 },
+                { "category": "link", "title": "Outils d'accessibilité web par Deque Systems", "url": "https://www.deque.com/axe/", "description": "Deque Systems offre une suite d'outils d'accessibilité web, dont axe, pour aider les développeurs à identifier et résoudre les problèmes d'accessibilité.", "note": 4 },
+                { "category": "link", "title": "Guide d'accessibilité pour les concepteurs UX", "url": "https://www.interaction-design.org/literature/article/accessibility-usability-for-all", "description": "Ce guide de l'Interaction Design Foundation se concentre sur l'intégration de l'accessibilité dans le processus de conception UX.", "note": 4 },
+                { "category": "link", "title": "Accessibilité des documents PDF", "url": "https://www.adobe.com/fr/accessibility/products/acrobat.html", "description": "Adobe fournit des ressources et des guides pour créer des documents PDF accessibles, essentiels pour de nombreux contenus numériques.", "note": 4.5 },
+                { "category": "link", "title": "Accessibilité des jeux vidéo", "url": "https://gameaccessibilityguidelines.com/fr/", "description": "Ce site propose des directives complètes pour rendre les jeux vidéo plus accessibles, couvrant divers aspects du design et du développement.", "note": 4 },
+                { "category": "link", "title": "Accessibilité des médias sociaux", "url": "https://www.socialmediatoday.com/news/8-tips-to-make-your-social-media-content-more-accessible/574802/", "description": "Ce guide offre des conseils pratiques pour rendre le contenu des médias sociaux plus accessible à tous les utilisateurs.", "note": 3.5 },
+                { "category": "link", "title": "Accessibilité des e-mails", "url": "https://www.emailonacid.com/blog/article/email-development/email-accessibility-best-practices/", "description": "Ce guide détaille les meilleures pratiques pour créer des e-mails accessibles, un aspect souvent négligé de l'accessibilité numérique.", "note": 4 },
+                { "category": "link", "title": "Accessibilité des présentations PowerPoint", "url": "https://support.microsoft.com/fr-fr/office/rendre-vos-présentations-powerpoint-accessibles-aux-personnes-atteintes-de-handicaps-6f7772b2-2f33-4bd2-8ca7-dae3b2b3ef25", "description": "Microsoft fournit un guide détaillé pour rendre les présentations PowerPoint accessibles, couvrant divers aspects de la création de contenu.", "note": 4 },
+                { "category": "link", "title": "Accessibilité des applications mobiles", "url": "https://developer.apple.com/accessibility/ios/", "description": "Apple propose un guide complet sur l'accessibilité pour les développeurs d'applications iOS, couvrant les fonctionnalités d'accessibilité intégrées et les meilleures pratiques.", "note": 4.5 },
+                { "category": "link", "title": "Accessibilité des chatbots et assistants virtuels", "url": "https://www.w3.org/WAI/APA/task-forces/research-questions/wiki/Chatbots_and_Conversational_UI_Accessibility", "description": "Ce document du W3C explore les questions d'accessibilité liées aux chatbots et aux interfaces conversationnelles.", "note": 3.5 },
+                { "category": "link", "title": "Accessibilité des formulaires web", "url": "https://webaim.org/techniques/forms/", "description": "WebAIM fournit un guide détaillé sur la création de formulaires web accessibles, un élément crucial de nombreux sites web.", "note": 4 },
+                { "category": "link", "title": "Accessibilité des contenus multimédias", "url": "https://www.w3.org/WAI/media/av/", "description": "Le W3C offre des ressources complètes sur l'accessibilité des contenus audio et vidéo, y compris des conseils sur les sous-titres et les descriptions audio.", "note": 4.5 },
+                { "category": "link", "title": "Accessibilité des cartes et données géographiques", "url": "https://www.w3.org/WAI/RD/wiki/Accessible_Maps", "description": "Ce wiki du W3C explore les défis et les solutions pour rendre les cartes et les données géographiques accessibles.", "note": 3.5 },
+                { "category": "link", "title": "Accessibilité des tableaux de données", "url": "https://www.w3.org/WAI/tutorials/tables/", "description": "Ce tutoriel du W3C explique comment créer des tableaux de données accessibles, un aspect important pour de nombreux types de contenu web.", "note": 4 },
+                { "category": "link", "title": "Accessibilité des SVG", "url": "https://css-tricks.com/accessible-svgs/", "description": "Ce guide de CSS-Tricks explore les techniques pour rendre les graphiques SVG accessibles, un aspect important du design web moderne.", "note": 3.5 },
+                { "category": "link", "title": "Accessibilité des animations web", "url": "https://css-tricks.com/accessible-web-animation-the-wcag-on-animation-explained/", "description": "Ce guide explique comment créer des animations web accessibles, en tenant compte des directives WCAG.", "note": 4 },
+                { "category": "link", "title": "Accessibilité des applications web progressives (PWA)", "url": "https://developer.mozilla.org/fr/docs/Web/Progressive_web_apps/Accessibilité", "description": "Mozilla fournit des conseils sur la création d'applications web progressives accessibles, combinant les meilleures pratiques du web et des applications mobiles.", "note": 4 },
+                { "category": "link", "title": "Accessibilité des interfaces de réalité virtuelle et augmentée", "url": "https://www.w3.org/WAI/APA/task-forces/research-questions/wiki/Accessibility_of_Virtual_and_Augmented_Reality", "description": "Ce document du W3C explore les défis et les opportunités en matière d'accessibilité dans les interfaces de réalité virtuelle et augmentée.", "note": 3.5 },
+                { "category": "link", "title": "Accessibilité des systèmes de gestion de contenu (CMS)", "url": "https://make.wordpress.org/accessibility/", "description": "WordPress, l'un des CMS les plus populaires, fournit des ressources et des directives pour créer des sites web accessibles avec leur plateforme.", "note": 4 },
+
                 /************************************************************************************************/
                 /* Exemple de lien pour la presse:                                                              */
                 /* { "category": "press", "title": "un titre", "url": "#", "description": "une description", "note": 3 }  */
@@ -86,21 +124,72 @@ window.data = {
         /* Accessibilité des Chatbots */
         /******************************/
         {
-            "id": "chatbots",
-            "title": "Accessibilité des Chatbots Interactifs",
-            "label": "Aller à la section Accessibilité des Chatbots Interactifs",
-            "description": "Analyse de l'accessibilité des différents chatbots interactifs disponibles pour le grand public.",
-            "content": [
-              { "title": "ChatGPT", "url": "https://chat.openai.com/", "result": "négatif", "description": "", "note": 1 },
-              {"title": "Claude", "url": "https://www.anthropic.com/", "result": "négatif", "description": "", "note": 1 },
-              {"title": "Gemini", "url": "https://gemini.google.com/", "result": "négatif", "description": "", "note": 1 },
-              {"title": "Pi", "url": "https://pi.ai/", "result": "?", "description": "", "note": 0 },
-              {"title": "Grok", "url": "https://grok.x.ai/", "result": "?", "description": "", "note": 0 },
-              {"title": "Groq (différent de Grok)", "url": "https://groq.com/", "result": "?", "description": "", "note": 0 },
-              {"title": "Copilot (Microsoft)", "url": "https://copilot.microsoft.com/", "result": "positif", "description": "Microsoft est généralement reconnu pour ses efforts en matière d'accessibilité dans ses produits. Bien que je n'aie pas trouvé d'informations spécifiques sur des tests d'accessibilité pour Copilot dans les résultats de recherche fournis, il est probable que Microsoft ait appliqué ses standards habituels d'accessibilité à cet outil.", "note": 4 },
-              {"title": "Alexa", "url": "https://alexa.amazon.com/", "result": "?", "description": "", "note": 0 }
-            ]
-          },
+          "id": "chatbots",
+          "title": "Accessibilité des Chatbots Interactifs",
+          "label": "Aller à la section Accessibilité des Chatbots Interactifs",
+          "description": "Analyse de l'accessibilité des différents chatbots interactifs disponibles pour le grand public.",
+          "table": true,
+          "hiddenColumns": ["url"],          
+          "numbered": true,
+          "content": [
+            {
+              "title": "ChatGPT",
+              "url": "https://chat.openai.com/",
+              "result": "négatif",
+              "description": "L'interface n'est souvent pas entièrement conforme aux normes d'accessibilité, ce qui pose des difficultés aux utilisateurs de lecteurs d'écran.",
+              "note": 1
+            },
+            {
+              "title": "Claude",
+              "url": "https://www.anthropic.com/",
+              "result": "positif",
+              "description": "Il intègre des fonctionnalités comme la reconnaissance vocale et la synthèse vocale pour améliorer l'accessibilité. Claude a fait l'objet de tests approfondis pour répondre aux normes d'accessibilité.",
+              "note": 4
+            },
+            {
+              "title": "Gemini",
+              "url": "https://gemini.google.com/",
+              "result": "positif",
+              "description": "Il s'intègre avec TalkBack pour fournir de meilleures descriptions d'images aux utilisateurs malvoyants.",
+              "note": 4
+            },
+            {
+              "title": "Pi",
+              "url": "https://pi.ai/",
+              "result": "?",
+              "description": "Pas d'information spécifique sur l'accessibilité disponible dans les résultats de recherche.",
+              "note": 0
+            },
+            {
+              "title": "Grok",
+              "url": "https://grok.x.ai/",
+              "result": "?",
+              "description": "Pas d'information spécifique sur l'accessibilité disponible dans les résultats de recherche.",
+              "note": 0
+            },
+            {
+              "title": "Groq (différent de Grok)",
+              "url": "https://groq.com/",
+              "result": "?",
+              "description": "Pas d'information spécifique sur l'accessibilité disponible dans les résultats de recherche.",
+              "note": 0
+            },
+            {
+              "title": "Copilot (Microsoft)",
+              "url": "https://copilot.microsoft.com/",
+              "result": "positif",
+              "description": "Compatible avec les lecteurs d'écran.",
+              "note": 4
+            },
+            {
+              "title": "Alexa",
+              "url": "https://alexa.amazon.com/",
+              "result": "positif",
+              "description": "Elle offre diverses fonctionnalités d'accessibilité, notamment le lecteur d'écran VoiceView qui aide les utilisateurs malvoyants.",
+              "note": 4
+            }
+          ]
+        },
         /*******************************/
         /* Idées d'Articles Vulgarisés */
         /*******************************/

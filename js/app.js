@@ -55,16 +55,118 @@ function createSectionTitle(title, index) {
 }
 
 function createDescription(description) {
-    return createElement('p', { class: 'card-text mb-4', textContent: description });
+    const p = createElement('p', { class: 'card-text mb-4' });
+    p.innerHTML = description;  // Utiliser innerHTML pour préserver le HTML
+    return p;
 }
 
 function createContentDescription(content) {
     const p = createElement('p', { class: 'card-text' });
-    p.innerHTML = `${createStarRating(content.note)} ${content.description}`;
+    p.appendChild(createStarRating(content.note));
+    p.insertAdjacentHTML('beforeend', ` ${content.description}`);  // Utiliser insertAdjacentHTML pour préserver le HTML
     return p;
 }
 
 function createSectionContent(section, sectionBody, sectionIndex) {
+    if (section.table) {
+        createTableContent(section, sectionBody);
+    } else {
+        createListContent(section, sectionBody, sectionIndex);
+    }
+}
+
+function createTableContent(section, sectionBody) {
+    if (!section.table) {
+        createListContent(section, sectionBody);
+        return;
+    }
+
+    // Créer un conteneur div pour le tableau avec défilement horizontal sur petits écrans
+    const tableContainer = createElement('div', { class: 'table-responsive' });
+    
+    const table = createElement('table', { class: 'table table-striped table-hover' });
+    const thead = createElement('thead');
+    const tbody = createElement('tbody');
+    
+    // Déterminer les colonnes en fonction des clés présentes dans les données
+    const columns = new Set();
+    section.content.forEach(item => {
+        Object.keys(item).forEach(key => columns.add(key));
+    });
+    
+    // Filtrer les colonnes cachées
+    const hiddenColumns = section.hiddenColumns || [];
+    const visibleColumns = Array.from(columns).filter(col => !hiddenColumns.includes(col));
+    
+    // Définir l'ordre des colonnes
+    const orderedColumns = ['title', 
+        ...visibleColumns.filter(col => !['title', 'note', 'result'].includes(col)), 
+        'note'
+    ].filter(col => visibleColumns.includes(col));
+
+    // Ajouter 'result' à la fin si elle est visible
+    if (visibleColumns.includes('result')) {
+        orderedColumns.push('result');
+    }
+    
+    // Créer l'en-tête du tableau
+    const headerRow = createElement('tr');
+    orderedColumns.forEach(column => {
+        const th = createElement('th', { scope: 'col' });
+        th.textContent = column.charAt(0).toUpperCase() + column.slice(1); // Capitalize
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    
+    // Créer les lignes du tableau
+    let itemCounter = 1;
+    section.content.forEach(item => {
+        const row = createElement('tr');
+        
+        orderedColumns.forEach(column => {
+            const cell = createElement('td');
+            
+            switch(column) {
+                case 'result':
+                    if (item.result !== undefined) {
+                        cell.appendChild(createResultIcon(item.result));
+                    }
+                    break;
+                case 'title':
+                    let titleContent = section.numbered ? `${itemCounter}. ` : '';
+                    if (item.url) {
+                        const link = createElement('a', { href: item.url, target: '_blank' });
+                        link.textContent = titleContent + (item.title || 'Sans titre');
+                        cell.appendChild(link);
+                    } else {
+                        cell.appendChild(document.createTextNode(titleContent + (item.title || 'Sans titre')));
+                    }
+                    itemCounter++;
+                    break;
+                case 'note':
+                    if (item.note !== undefined) {
+                        cell.appendChild(createStarRating(item.note));
+                    }
+                    break;
+                default:
+                    if (item[column] !== undefined) {
+                        cell.innerHTML = item[column];
+                    }
+            }
+            
+            row.appendChild(cell);
+        });
+        
+        tbody.appendChild(row);
+    });
+    
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    tableContainer.appendChild(table);
+    sectionBody.appendChild(tableContainer);
+}
+
+function createListContent(section, sectionBody, sectionIndex) {
     let currentCategory = null;
     let h3Counter = 1;
     let itemCounter = 1;
@@ -82,61 +184,81 @@ function createSectionContent(section, sectionBody, sectionIndex) {
 
 function createSubsectionTitle(sectionIndex, h3Counter, category) {
     const h3 = createElement('h3', { class: 'mt-4 mb-3' });
-    h3.innerHTML = `${sectionIndex + 1}.${h3Counter} ${getCategoryTitle(category)}`;
+    h3.textContent = `${sectionIndex + 1}.${h3Counter} ${getCategoryTitle(category)}`;
     return h3;
 }
 
 function createContentItem(item, numbered, counter) {
     const contentItem = createElement('div', { class: 'mb-3' });
-    let itemContent = '';
-
-    if (item.url) {
-        itemContent = createLinkItem(item, numbered ? counter : null);
-    } else if (item.title) {
-        itemContent = createTitleItem(item, numbered ? counter : null);
+    
+    const titleParagraph = createElement('p');
+    const strongElement = createElement('strong');
+    
+    if (numbered) {
+        strongElement.textContent = `${counter}. `;
     }
-
-    contentItem.innerHTML = itemContent;
+    
+    if (item.result !== undefined) {
+        strongElement.appendChild(createResultIcon(item.result));
+        strongElement.appendChild(document.createTextNode(' ')); // Ajoute un espace après l'icône
+    }
+    
+    if (item.url) {
+        const link = createElement('a', { href: item.url, target: '_blank' });
+        link.textContent = item.title || 'Sans titre';
+        strongElement.appendChild(link);
+    } else {
+        strongElement.appendChild(document.createTextNode(item.title || 'Sans titre'));
+    }
+    
+    titleParagraph.appendChild(strongElement);
+    titleParagraph.appendChild(createStarRating(item.note));
+    
+    const descriptionParagraph = createElement('p');
+    descriptionParagraph.innerHTML = item.description || 'Pas de description disponible.';
+    
+    contentItem.appendChild(titleParagraph);
+    contentItem.appendChild(descriptionParagraph);
+    
     return contentItem;
 }
 
-function createLinkItem(item, counter) {
-    const itemNumber = counter ? `${counter}. ` : '';
-    let titleContent = `<a href="${item.url}" target="_blank">${item.title || 'Sans titre'}</a>`;
+function createStarRating(rating) {
+    if (rating === undefined) return document.createTextNode('');
     
-    let resultIcon = '';
-    if (item.result !== undefined) {
-        const iconClass = item.result === 'positif' ? 'bi-check-circle-fill text-success' : 
-                          item.result === 'négatif' ? 'bi-x-circle-fill text-danger' : 
-                          'bi-question-circle-fill text-warning';
-        const iconAriaLabel = item.result === 'positif' ? 'Accessibilité positive' : 
-                              item.result === 'négatif' ? 'Accessibilité négative' : 
-                              'Accessibilité inconnue';
-        resultIcon = `<i class="bi ${iconClass}" aria-label="${iconAriaLabel}" role="img"></i> `;
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    
+    const starContainer = createElement('span', { 
+        class: 'star-rating ms-2 d-inline-block', 
+        'aria-label': `Note: ${rating} sur 5`,
+        style: 'white-space: nowrap;'  // Empêcher le retour à la ligne
+    });
+    
+    for (let i = 0; i < fullStars; i++) {
+        starContainer.appendChild(createElement('i', { class: 'bi bi-star-fill text-warning' }));
     }
     
-    return `
-        <p><strong>${itemNumber}${resultIcon}${titleContent}</strong>${createStarRating(item.note)}</p>
-        <p>${item.description || 'Pas de description disponible.'}</p>
-    `;
+    if (hasHalfStar) {
+        starContainer.appendChild(createElement('i', { class: 'bi bi-star-half text-warning' }));
+    }
+    
+    for (let i = 0; i < emptyStars; i++) {
+        starContainer.appendChild(createElement('i', { class: 'bi bi-star text-warning' }));
+    }
+    
+    return starContainer;
 }
 
-function createTitleItem(item, counter) {
-    const itemNumber = counter ? `${counter}. ` : '';
-    return `
-        <p><strong>${itemNumber}${item.title || 'Sans nom'}</strong>${createStarRating(item.note)}</p>
-        <p>${item.description || 'Pas de description disponible.'}</p>
-    `;
-}
-
-function createStarRating(rating) {
-    if (rating === undefined) return '';
-    
-    const stars = Array.from({ length: 5 }, (_, i) => 
-        `<i class="bi ${i < rating ? 'bi-star-fill' : 'bi-star'} text-warning"></i>`
-    ).join('');
-    
-    return `<span class="star-rating ms-2 d-inline-block" aria-label="Note: ${rating} sur 5">${stars}</span>`;
+function createResultIcon(result) {
+    const iconClass = result === 'positif' ? 'bi-check-circle-fill text-success' : 
+                      result === 'négatif' ? 'bi-x-circle-fill text-danger' : 
+                      'bi-question-circle-fill text-warning';
+    const iconAriaLabel = result === 'positif' ? 'Accessibilité positive' : 
+                          result === 'négatif' ? 'Accessibilité négative' : 
+                          'Accessibilité inconnue';
+    return createElement('i', { class: `bi ${iconClass}`, 'aria-label': iconAriaLabel, role: 'img' });
 }
 
 function getCategoryTitle(category) {
