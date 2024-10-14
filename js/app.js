@@ -36,7 +36,7 @@ function createSection(section, sectionIndex) {
     sectionBody.appendChild(createSectionTitle(section.title, sectionIndex));
 
     if (section.description) {
-        sectionBody.appendChild(createDescription(section.description));
+        sectionBody.appendChild(createSectionDescription(section.description));
     }
 
     if (section.content && section.content.description) {
@@ -54,8 +54,8 @@ function createSectionTitle(title, index) {
     return h2;
 }
 
-function createDescription(description) {
-    const p = createElement('p', { class: 'card-text mb-4' });
+function createSectionDescription(description) {
+    const p = createElement('span', { class: 'lead card-text mb-4 mt' });
     p.innerHTML = description;  // Utiliser innerHTML pour préserver le HTML
     return p;
 }

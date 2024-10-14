@@ -8,9 +8,7 @@ window.data = {
             "id": "introduction",
             "title": "Introduction",
             "label": "Aller à la section Introduction",
-            "content": {
-                "description": "Ce site présente une compilation de ressources sur l'accessibilité numérique. Vous trouverez ici des liens vers des articles, des ressources sur les directives EU, les WCAG, ainsi que des idées d'articles à vulgariser sur les nouvelles technologies."
-            }
+            "description": "Ce site présente une compilation de ressources sur l'accessibilité numérique. Vous trouverez ici des liens vers des articles, des ressources sur les directives EU, les WCAG, ainsi que des idées d'articles à vulgariser sur les nouvelles technologies."
         },
         /*****************************/        
         /* Articles, presse, décrets */
@@ -157,21 +155,21 @@ window.data = {
               "title": "Pi",
               "url": "https://pi.ai/",
               "result": "?",
-              "description": "Pas d'information spécifique sur l'accessibilité disponible dans les résultats de recherche.",
+              "description": "<i>Pas d'information.</i>",
               "note": 0
             },
             {
               "title": "Grok",
               "url": "https://grok.x.ai/",
               "result": "?",
-              "description": "Pas d'information spécifique sur l'accessibilité disponible dans les résultats de recherche.",
+              "description": "<i>Pas d'information.</i>",
               "note": 0
             },
             {
               "title": "Groq (différent de Grok)",
               "url": "https://groq.com/",
               "result": "?",
-              "description": "Pas d'information spécifique sur l'accessibilité disponible dans les résultats de recherche.",
+              "description": "<i>Pas d'information.</i>",
               "note": 0
             },
             {
@@ -197,10 +195,10 @@ window.data = {
             "id": "vulgarisation",
             "title": "Idées d'Articles Vulgarisés sur les Nouvelles Technologies",
             "label": "Aller à la section Idées d'Articles Vulgarisés",
-            "description": "Idées d'articles à vulgariser sur les technologies émergentes.",
+            "description": "Idées d'articles à vulgariser sur les Nouvelles Technologies.",
             "numbered": true,
             "content": [
-
+                { "title": "Les lunettes intelligentes Ray-Ban Meta : une révolution pour l'accessibilité des malvoyants ?", "description": "Les lunettes intelligentes Ray-Ban Meta, fruit d'une collaboration entre Meta et Ray-Ban, suscitent un grand intérêt dans le domaine de l'accessibilité pour les personnes malvoyantes. Bien que n'étant pas spécifiquement conçues pour cette utilisation, ces lunettes offrent des fonctionnalités prometteuses qui pourraient grandement améliorer l'autonomie et la qualité de vie des déficients visuels." }
             ]
         }
     ]
