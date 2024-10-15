@@ -2,3 +2,80 @@ p {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+/* Base font size for mobile */
+html {
+    font-size: 16px;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Responsive typography */
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  p, li {
+    font-size: 1rem;
+  }
+  
+  /* Increase font size for larger screens */
+  @media screen and (min-width: 768px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    html {
+      font-size: 20px;
+    }
+  }
+  
+  /* Ensure minimum text size on all devices */
+  @media screen and (max-width: 320px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  /* Improve readability */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  /* Add more whitespace on mobile */
+  @media screen and (max-width: 767px) {
+    .container {
+      padding: 0 20px;
+    }
+    
+    h1, h2, p {
+      margin-bottom: 1.2em;
+    }
+  }
+  
+  /* Optional: Text resizer */
+  .text-resizer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+  }
+  
+  .text-resizer button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
