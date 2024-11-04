@@ -198,7 +198,8 @@ window.data = {
             "description": "Idées d'articles à vulgariser sur les Nouvelles Technologies.",
             "numbered": true,
             "content": [
-                { "title": "Les lunettes intelligentes Ray-Ban Meta : une révolution pour l'accessibilité des malvoyants ?", "description": "Les lunettes intelligentes Ray-Ban Meta, fruit d'une collaboration entre Meta et Ray-Ban, suscitent un grand intérêt dans le domaine de l'accessibilité pour les personnes malvoyantes. Bien que n'étant pas spécifiquement conçues pour cette utilisation, ces lunettes offrent des fonctionnalités prometteuses qui pourraient grandement améliorer l'autonomie et la qualité de vie des déficients visuels." }
+                { "title": "Les lunettes intelligentes Ray-Ban Meta : une révolution pour l'accessibilité des malvoyants ?", "description": "Les lunettes intelligentes Ray-Ban Meta, fruit d'une collaboration entre Meta et Ray-Ban, suscitent un grand intérêt dans le domaine de l'accessibilité pour les personnes malvoyantes. Bien que n'étant pas spécifiquement conçues pour cette utilisation, ces lunettes offrent des fonctionnalités prometteuses qui pourraient grandement améliorer l'autonomie et la qualité de vie des déficients visuels. <br><u>Selon FrAndroid</u>:\"<i>Les utilisateurs aveugles et malvoyants pourront quant à eux bénéficier directement des services de Be My Eyes, permettant d’entrer en contact avec des volontaires qui pourront leur décrire une scène ou un objet.</i>\"" },
+                { "title": "Chat vocal de ChatGPT: Une aide pour les déficients visuels ?", "description": "OpenAI fournit le chat vocal permettant de dialoguer avec le chatbot comme si c'était un humain. Cette manière d'interagir est nettement plus facile pour les personnes déficientes visuelles. Elle permet de se libérer d'écrire et d'interagir avec une interface peu accessible." }
             ]
         }
     ]
